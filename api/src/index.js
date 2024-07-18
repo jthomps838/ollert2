@@ -12,6 +12,7 @@ import userRoutes from './routes/userRoutes.js';
 import healthRouter from './routes/healthRoute.js';
 import authRouter from './routes/authRoute.js';
 import profileRoutes from './routes/profileRoute.js';
+import boardRouter from './routes/boardRoute.js';
 import errorHandling from './middlewares/errors.js';
 import * as swaggerJson from './utils/swagger.js';
 import './utils/passport.js';
@@ -72,6 +73,7 @@ class Server {
         this.app.use('/api/auth', authRouter);
         this.app.use('/api/users', userRoutes);
         this.app.use('/api/profile', profileRoutes);
+        this.app.use('/api/boards', boardRouter);
     }
 
     handleShutdown() {
