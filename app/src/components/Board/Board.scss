@@ -1,0 +1,129 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+// Board Styles
+.container {
+    .board-header {
+        background-color: lightblue;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+
+        .board-icon {
+            font-size: 30px;
+            color: $primary-color;
+        }
+        .board-title {
+            font-size: 2rem;
+            color: $dark-grey;
+            margin-bottom: 1rem;
+        }
+
+        .board-settings {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+
+            .board-icon {
+                margin: 10px;
+            }
+
+            .board-dropdown {
+                position: absolute;
+                top: calc(100% + 20px);
+                right: 0;
+                z-index: 10;
+                background-color: grey;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                padding: 0.5rem;
+                border-radius: 4px;
+                min-width: 300px;
+                display: flex;
+                flex-direction: column;
+                min-height: calc(90vh - 150px);
+                overflow: scroll;
+
+                h3 {
+                    border-bottom: 1px solid orange;
+                    width: fit-content;
+                }
+
+                .dropdown-close {
+                    position: absolute;
+                    right: 10px;
+                    top: 10px;
+
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
+            }
+        }
+    }
+
+    .board-content {
+        display: flex;
+        margin: 20px;
+        overflow: scroll;
+    }
+
+    .board-list {
+        display: flex;
+        flex-direction: column;
+        max-width: 300px;
+        background-color: grey;
+        margin: 20px;
+        flex-wrap: wrap;
+        padding: 20px;
+        border-radius: 5px;
+        border: 1px solid $dark-grey;
+
+        .board-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: aqua;
+            margin-top: 20px;
+            min-height: 100px;
+            padding: 5px;
+            border-radius: 5px;
+
+            main p {
+                font-size: 12px;
+                font-weight: 300;
+            }
+            footer {
+                .label-container {
+                    display: flex;
+                    flex-wrap: wrap;
+                    span {
+                        background: coral;
+                        border-radius: 3px;
+                        padding: 3px;
+                        margin: 0 3px;
+                        font-size: 12px;
+                        font-weight: bold;
+                    }
+                }
+                .due-date {
+                    border-radius: 10px;
+                    margin: 10px 0 0;
+                    max-width: 80px;
+                    background-color: yellow;
+                    padding: 5px;
+                    display: flex;
+
+                    .clock-icon {
+                        font-size: 14px;
+                    }
+
+                    p {
+                        font-size: 10px;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+}

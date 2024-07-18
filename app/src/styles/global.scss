@@ -1,0 +1,48 @@
+@import './variables';
+@import './mixins';
+
+// Reset Styles
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    background-color: #f4f5f7;
+    color: #333;
+    width: 100vw;
+    height: 100vh;
+}
+
+// Utility Classes
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.main_header {
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    background-color: $dark-grey;
+    padding: 20px 50px;
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: calc(100vh - 100px);
+}

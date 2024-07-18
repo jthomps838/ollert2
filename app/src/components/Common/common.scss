@@ -1,0 +1,9 @@
+@import '../../styles/variables';
+
+.aside-menu {
+    max-width: 200px;
+    overflow: scroll;
+    background-color: $light-grey;
+    height: 100%;
+    width: 200px;
+}
