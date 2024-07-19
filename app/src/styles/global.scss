@@ -46,3 +46,53 @@ body {
     align-items: flex-start;
     height: calc(100vh - 100px);
 }
+
+.four-o-one-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 100px);
+    gap: 50px;
+
+    header {
+        @include warning-header;
+
+        h1 {
+            color: $danger-color;
+        }
+    }
+
+    .image {
+        width: 300px;
+        height: 300px;
+        border: 1px solid $danger-color;
+        border-radius: 50%;
+    }
+
+    .four-o-one-links {
+        @include warning-links;
+    }
+}
+
+.four-o-four-container {
+    @include flex-center-col;
+    gap: 50px;
+
+    header {
+        @include warning-header;
+
+        h1 {
+            color: $primary-color;
+        }
+    }
+
+    .image {
+        width: 400px;
+        height: 400px;
+    }
+
+    .four-o-four-links {
+        @include warning-links;
+    }
+}

@@ -2,12 +2,14 @@ import axios from 'axios';
 import { Suspense, useEffect, useState } from 'react';
 import { IoPersonSharp } from 'react-icons/io5';
 
+import { useNavigate } from 'react-router';
 import Card from '../components/Card/Card';
 import AsideMenu from '../components/Common/AsideMenu';
 import '../styles/boardPage.scss';
 
 const BoardsPage = () => {
     const [boards, setBoards] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios
@@ -19,8 +21,14 @@ const BoardsPage = () => {
                     setBoards(() => [...data]);
                 }
             })
-            .catch((err) => console.log(err));
-    }, []);
+            .catch((err) => {
+                console.log(err);
+                if (err?.response?.status === 401) {
+                    console.log('redirect');
+                    navigate('/unauthorized');
+                }
+            });
+    }, [navigate]);
 
     return (
         <section className='main-content'>
