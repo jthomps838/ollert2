@@ -1,21 +1,24 @@
-import express from 'express';
+import RedisStore from 'connect-redis';
 import cors from 'cors';
-import morgan from 'morgan';
-import helmet from 'helmet';
-import swaggerUi from 'swagger-ui-express';
-import swaggerJsdoc from 'swagger-jsdoc';
-import mongoose from 'mongoose';
+import express from 'express';
 import session from 'express-session';
+import helmet from 'helmet';
+import mongoose from 'mongoose';
+import morgan from 'morgan';
+import logger from 'node-color-log';
 import passport from 'passport';
+import { createClient } from 'redis';
+import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
 
-import userRoutes from './routes/userRoutes.js';
-import healthRouter from './routes/healthRoute.js';
-import authRouter from './routes/authRoute.js';
-import profileRoutes from './routes/profileRoute.js';
-import boardRouter from './routes/boardRoute.js';
 import errorHandling from './middlewares/errors.js';
-import * as swaggerJson from './utils/swagger.js';
+import authRouter from './routes/authRoute.js';
+import boardRouter from './routes/boardRoute.js';
+import healthRouter from './routes/healthRoute.js';
+import profileRoutes from './routes/profileRoute.js';
+import userRoutes from './routes/userRoutes.js';
 import './utils/passport.js';
+import * as swaggerJson from './utils/swagger.js';
 
 class Server {
     constructor(port) {
@@ -28,8 +31,9 @@ class Server {
         };
 
         this.connectDB();
-        this.initializeMiddlewares();
         this.initializeSwagger();
+        this.initializeMiddlewares();
+        this.initializeSessionStore();
         this.initializeRoutes();
         this.initializeAuth();
         this.initializeErrorHandling();
@@ -37,29 +41,78 @@ class Server {
     }
 
     initializeAuth() {
-        console.log('auth initialized');
-    }
-
-    initializeMiddlewares() {
-        // Middleware
-        this.app.use(express.json());
-        this.app.use(express.urlencoded({ extended: false }));
-        this.app.use(cors());
-        this.app.use(helmet());
-        this.app.use(morgan('dev'));
-        this.app.use(
-            session({
-                secret: 'daklfjasdf',
-                resave: false,
-                saveUninitialized: false,
-            }),
-        );
+        logger
+            .color('green')
+            .log('Setting up authentication provided by Passport.js');
         this.app.use(passport.initialize());
         this.app.use(passport.session());
     }
 
+    initializeSessionStore() {
+        let redisClient = createClient({
+            host: 'localhost',
+            port: process.env.REDIS_PORT,
+        });
+        redisClient
+            .connect()
+            .then(() =>
+                logger
+                    .color('green')
+                    .bold()
+                    .log(`Redis client connected on ${process.env.REDIS_PORT}`),
+            )
+            .catch(console.error);
+
+        logger.color('green').log('Creating redis Client...');
+
+        let redisStore = new RedisStore({
+            client: redisClient,
+            prefix: 'ollert:',
+        });
+
+        logger.color('green').log('Redis store initialized');
+
+        const sessionOptions = {
+            store: redisStore,
+            secret: process.env.SESSION_SECRET_KEY,
+            resave: false,
+            saveUninitialized: false,
+            cookie: {
+                // secure: process.env.NODE_ENV === 'production' ? true : false,
+                // httpOnly: process.env.NODE_ENV === 'production' ? true : false,
+                maxAge: 1000 * 60 * 10, // session max age in miliseconds
+            },
+        };
+
+        if (process.env.NODE_ENV === 'production') {
+            app.set('trust proxy', 1); // trust first proxy
+            sess.cookie.secure = true; // serve secure cookies
+        }
+
+        logger.bold().color('green').log('creating session');
+        this.app.use(session(sessionOptions));
+    }
+
+    initializeMiddlewares() {
+        this.app.use(express.json());
+        this.app.use(express.urlencoded({ extended: false }));
+        this.app.use(
+            cors({
+                origin: process.env.UI_URL, // Client origin
+                credentials: true,
+                optionsSuccessStatus: 200,
+            }),
+        );
+        this.app.use(helmet());
+        this.app.use(morgan('dev'));
+    }
+
     initializeSwagger() {
         const swaggerDocs = swaggerJsdoc(this.swaggerOptions);
+        logger.color('blue').bold().log('Self documenting via Swagger');
+        logger
+            .bgColor('blue')
+            .log(`Visit ${process.env.HOST}/api-docs for further details`);
         this.app.use(
             '/api-docs',
             swaggerUi.serve,
@@ -68,7 +121,6 @@ class Server {
     }
 
     initializeRoutes() {
-        //  Routes
         this.app.use('/', healthRouter);
         this.app.use('/api/auth', authRouter);
         this.app.use('/api/users', userRoutes);
@@ -90,24 +142,30 @@ class Server {
     async connectDB() {
         try {
             await mongoose.connect(this.dbUrl);
-            console.log('Connected to MongoDB');
+            logger.bgColor('magenta').log('Connected to MongoDB');
         } catch (err) {
-            console.log('Could not connect to MongoDB', err);
+            logger.bgColor('red').log('Could not connect to MongoDB', err);
         }
     }
 
     async disconnectDB() {
         try {
             await mongoose.disconnect();
-            console.log('Disconnected from MongoDB');
+            logger.color('green').bold().log('Disconnected from MongoDB');
         } catch (err) {
-            console.log('Could not disconnect from MongoDB', err);
+            logger
+                .color('red')
+                .bold()
+                .log('Could not disconnect from MongoDB', err);
         }
     }
 
     listen() {
         this.app.listen(this.port, () => {
-            console.log(`Server is running on ${this.port}`);
+            logger
+                .color('green')
+                .bold()
+                .log(`Server is running on ${this.port}`);
         });
     }
 

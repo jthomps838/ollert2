@@ -20,11 +20,11 @@ class AuthController {
     }
 
     static signOut(req, res) {
-        req.logout((err) => {
+        req.session.destroy((err) => {
             if (err) {
                 return next(err);
             }
-            res.redirect('/api/auth/signin');
+            res.redirect('/signin');
         });
     }
 }

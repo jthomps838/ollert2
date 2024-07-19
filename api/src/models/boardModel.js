@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
-const { Schema } = mongoose;
-const boardSchema = new mongoose.Schema({
+import { Schema, model } from 'mongoose';
+
+const boardSchema = new Schema({
     title: { type: String, required: true },
     description: { type: String },
     owner: { type: Schema.Types.ObjectId, ref: 'User', required: true },
@@ -10,6 +10,6 @@ const boardSchema = new mongoose.Schema({
     updatedAt: { type: Date, default: Date.now },
 });
 
-const Board = mongoose.model('Board', boardSchema);
+const Board = model('Board', boardSchema);
 
 export default Board;

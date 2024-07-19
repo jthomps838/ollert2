@@ -1,14 +1,23 @@
 import mongoose from 'mongoose';
 
 import Board from '../models/boardModel.js';
+import { DEFAULT_PAGE_LIMIT, DEFAULT_PAGE_SKIP } from '../utils/constants.js';
 
 class BoardController {
     static async getBoards(req, res, next) {
         try {
-            const boards = await Board.find().populate('owner members');
+            const { limit, skip } = req.query;
+            const boards = await Board.find()
+                .limit(limit || DEFAULT_PAGE_LIMIT)
+                .skip(skip || DEFAULT_PAGE_SKIP)
+                .populate({ path: 'owner', select: '_id' })
+                .populate('members');
             res.status(200).json(boards);
         } catch (err) {
-            res.status(500).json({ message: err.message });
+            if ((err.message = 'Unauthorized Request')) {
+                err.code = 401;
+            }
+            next(err);
         }
     }
 
@@ -35,7 +44,7 @@ class BoardController {
             const board = new Board({
                 title,
                 description,
-                owner: mongoose.Types.ObjectId.createFromHexString(owner),
+                owner: Types.ObjectId.createFromHexString(owner),
                 members: members.map((id) =>
                     mongoose.Types.ObjectId.createFromHexString(id),
                 ),

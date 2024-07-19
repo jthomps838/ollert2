@@ -1,6 +1,6 @@
+import bcrypt from 'bcryptjs';
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
-import bcrypt from 'bcryptjs';
 
 import User from '../models/userModel.js';
 

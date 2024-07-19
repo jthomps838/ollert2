@@ -1,13 +1,14 @@
 import express from 'express';
 
 import BoardController from '../controllers/boardController.js';
+import ensureAuthenticated from '../middlewares/auth.js';
 
 const router = express.Router();
 
-router.get('/', BoardController.getBoards);
+router.get('/', ensureAuthenticated, BoardController.getBoards);
 
-router.get('/:id', BoardController.getBoardById);
+router.get('/:id', ensureAuthenticated, BoardController.getBoardById);
 
-router.post('/', BoardController.createBoard);
+router.post('/', ensureAuthenticated, BoardController.createBoard);
 
 export default router;
