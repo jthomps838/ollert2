@@ -1,12 +1,11 @@
 import { Suspense, useEffect, useState } from 'react';
 
-import BoardList from './BoardList';
 import './Board.scss';
 import BoardHeader from './BoardHeader';
+import BoardList from './BoardList';
 
 // mock data
 import FakeLists from '../../mockData/boards';
-import { sortByOrder } from '../../utils/sort';
 
 const Board = ({ id, title }) => {
     const [boardLists, setBoardLists] = useState([]);

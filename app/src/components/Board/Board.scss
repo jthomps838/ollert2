@@ -19,12 +19,13 @@
             color: $dark-grey;
             margin-bottom: 1rem;
         }
-
+        .board-menu > section {
+            left: -20px;
+        }
         .board-settings {
             display: flex;
             justify-content: space-between;
             position: relative;
-
             .board-icon {
                 margin: 10px;
             }
@@ -59,6 +60,9 @@
                     }
                 }
             }
+            // .menu-dropdown {
+            //     right: -100px;
+            // }
         }
     }
 

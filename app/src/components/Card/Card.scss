@@ -1,0 +1,27 @@
+@import '../../styles//variables';
+
+.board-link {
+    text-decoration: none;
+    color: inherit;
+    max-width: 200px;
+    background-color: $light-grey;
+    min-height: 150px;
+    border-radius: 5px;
+    border: 1px solid $dark-grey;
+    box-shadow: 3px 3px 5px $dark-grey;
+    margin: 20px;
+    padding: 10px;
+    &:hover {
+        opacity: 0.7;
+    }
+
+    .board-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        h1 {
+            font-size: 20px;
+        }
+    }
+}

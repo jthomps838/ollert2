@@ -1,6 +1,6 @@
 import { useRef } from 'react';
-import { useOnClickOutside } from 'usehooks-ts';
 import { ImCross } from 'react-icons/im';
+import { useOnClickOutside } from 'usehooks-ts';
 
 const BoardDropdown = ({ children, open, setOpen }) => {
     const ref = useRef(null);
@@ -12,7 +12,7 @@ const BoardDropdown = ({ children, open, setOpen }) => {
     };
 
     useOnClickOutside(ref, handleClickOutside);
-    console.log(children, open);
+
     return (
         <>
             {open && (

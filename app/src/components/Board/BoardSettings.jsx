@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 import { FaUserCircle } from 'react-icons/fa';
+import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 import { IoFilter } from 'react-icons/io5';
 
 import BoardFilterDropdown from './BoardFilterDropdown';
