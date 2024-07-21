@@ -1,14 +1,26 @@
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
+
 import Board from '../components/Board/Board';
 import AsideMenu from '../components/Common/AsideMenu';
 
 const BoardDetails = () => {
+    const [board, setBoard] = useState({});
+    const { id: boardId } = useParams('id');
+
+    useEffect(() => {
+        axios
+            .get(`${import.meta.env.VITE_SERVER_URL}/api/boards/${boardId}`)
+            .then(({ data }) => {
+                setBoard(() => data);
+            });
+    }, [boardId]);
+    console.log(board);
     return (
         <section className='main-content'>
             <AsideMenu />
-            <Board
-                id={1}
-                title={'Kanban Board title'}
-            />
+            <Board board={board} />
         </section>
     );
 };

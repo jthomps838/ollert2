@@ -1,6 +1,7 @@
 import express from 'express';
 
 import HealthController from '../controllers/healthController.js';
+import seedDatabase from '../controllers/seedDbController.js';
 
 const router = express.Router();
 
@@ -23,5 +24,7 @@ const router = express.Router();
  *         description: Internal server error
  */
 router.get('/', HealthController.getHealth);
+
+router.get('/seed/only/dev', seedDatabase);
 
 export default router;

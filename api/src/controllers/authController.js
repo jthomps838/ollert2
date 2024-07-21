@@ -29,12 +29,11 @@ class AuthController {
             await newUser.save();
             res.json({ user: { username, email } });
         } catch (err) {
-            console.log(err);
             if (err.code === 11000) {
                 res.status(400);
                 return next({
                     code: 400,
-                    message: `User: ${req.body.username} already exists`,
+                    message: `Username: ${req.body.username} or Email: ${req.body.email} already exists`,
                 });
             }
             next({ error: 'User was not signed up, retry again later.' });
@@ -51,7 +50,7 @@ class AuthController {
     }
 
     static validateSignup = (body) => {
-        const error = '';
+        let error = '';
         if (!body) {
             return 'No body present in request';
         }
@@ -60,10 +59,9 @@ class AuthController {
             password: validatePassword,
             email: validateEmail,
         };
-
         for (let i in body) {
             if (!validators[i](body[i])) {
-                error.append(`No ${i} is found in request body`);
+                error = `${error} No ${i} is found in request body, or does not conform to validation rules`;
             }
         }
         return error;

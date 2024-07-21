@@ -34,8 +34,8 @@ class Server {
         this.initializeSwagger();
         this.initializeMiddlewares();
         this.initializeSessionStore();
-        this.initializeRoutes();
         this.initializeAuth();
+        this.initializeRoutes();
         this.initializeErrorHandling();
         this.handleShutdown();
     }
@@ -50,17 +50,18 @@ class Server {
 
     initializeSessionStore() {
         let redisClient = createClient({
-            host: 'localhost',
+            host: process.env.REDIS_HOST,
             port: process.env.REDIS_PORT,
         });
         redisClient
             .connect()
-            .then(() =>
+            .then((data) => {
                 logger
                     .color('green')
                     .bold()
-                    .log(`Redis client connected on ${process.env.REDIS_PORT}`),
-            )
+                    .log(`Redis client connected on ${process.env.REDIS_PORT}`);
+                logger.log(data);
+            })
             .catch(console.error);
 
         logger.color('green').log('Creating redis Client...');
@@ -69,7 +70,7 @@ class Server {
             client: redisClient,
             prefix: 'ollert:',
         });
-
+        logger.log(redisStore);
         logger.color('green').log('Redis store initialized');
 
         const sessionOptions = {
@@ -78,9 +79,9 @@ class Server {
             resave: false,
             saveUninitialized: false,
             cookie: {
-                // secure: process.env.NODE_ENV === 'production' ? true : false,
-                // httpOnly: process.env.NODE_ENV === 'production' ? true : false,
-                maxAge: 1000 * 60 * 10, // session max age in miliseconds
+                secure: process.env.NODE_ENV === 'production' ? true : false,
+                httpOnly: process.env.NODE_ENV === 'production' ? true : false,
+                maxAge: 10000 * 60 * 10, // session max age in miliseconds
             },
         };
 
@@ -121,8 +122,8 @@ class Server {
     }
 
     initializeRoutes() {
-        this.app.use('/', healthRouter);
         this.app.use('/api/auth', authRouter);
+        this.app.use('/', healthRouter);
         this.app.use('/api/users', userRoutes);
         this.app.use('/api/profile', profileRoutes);
         this.app.use('/api/boards', boardRouter);

@@ -24,7 +24,6 @@ const BoardsPage = () => {
             .catch((err) => {
                 console.log(err);
                 if (err?.response?.status === 401) {
-                    console.log('redirect');
                     navigate('/unauthorized');
                 }
             });

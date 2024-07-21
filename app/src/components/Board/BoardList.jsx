@@ -1,22 +1,7 @@
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense } from 'react';
 import BoardCard from './BoardCard';
 
-// mock data
-import FakeCards from '../../mockData/cards';
-import { sortByOrder } from '../../utils/sort';
-
-const BoardList = ({ list: { id, title } }) => {
-    const [cards, setCards] = useState([]);
-
-    useEffect(() => {
-        if (id) {
-            const filteredCards = FakeCards.filter(
-                (card) => card.list === id && !card.archived,
-            );
-            setCards(filteredCards.sort(sortByOrder));
-        }
-    }, [id]);
-
+const BoardList = ({ list: { id, title }, cards }) => {
     return (
         <section className='board-list'>
             <Suspense fallback={<h2>Loading...</h2>}>
@@ -24,7 +9,7 @@ const BoardList = ({ list: { id, title } }) => {
                     <h2>{title}</h2>
                 </header>
                 <main>
-                    {cards.map((card) => (
+                    {cards?.map((card) => (
                         <BoardCard
                             key={card.order}
                             card={card}

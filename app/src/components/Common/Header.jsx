@@ -6,8 +6,8 @@ const Header = () => {
             .post(
                 `${import.meta.env.VITE_SERVER_URL}/api/auth/signin`,
                 {
-                    username: 'josefffffph',
-                    password: 'testing',
+                    username: 'joseph',
+                    password: 'Testing123!',
                 },
                 { withCredentials: true },
             )

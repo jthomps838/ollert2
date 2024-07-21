@@ -1,0 +1,107 @@
+[
+    {
+        "title": "To Do",
+        "board": "669b03c707f6072844ddae67",
+        "order": 1,
+        "createdAt": "2024-07-01T00:00:00Z",
+        "updatedAt": "2024-07-01T00:00:00Z"
+    },
+    {
+        "title": "In Progress",
+        "board": "669b03c707f6072844ddae67",
+        "order": 2,
+        "createdAt": "2024-07-01T00:00:00Z",
+        "updatedAt": "2024-07-01T00:00:00Z"
+    },
+    {
+        "title": "Testing",
+        "board": "669b03c707f6072844ddae67",
+        "order": 3,
+        "createdAt": "2024-07-01T00:00:00Z",
+        "updatedAt": "2024-07-01T00:00:00Z"
+    },
+    {
+        "title": "Review",
+        "board": "669b03c707f6072844ddae67",
+        "order": 4,
+        "createdAt": "2024-07-01T00:00:00Z",
+        "updatedAt": "2024-07-01T00:00:00Z"
+    },
+    {
+        "title": "Completed",
+        "board": "669b03c707f6072844ddae67",
+        "order": 5,
+        "createdAt": "2024-07-01T00:00:00Z",
+        "updatedAt": "2024-07-01T00:00:00Z"
+    },
+    {
+        "title": "Backlog",
+        "board": "669b03c707f6072844ddae67",
+        "order": 6,
+        "createdAt": "2024-07-01T00:00:00Z",
+        "updatedAt": "2024-07-01T00:00:00Z"
+    },
+    {
+        "title": "Campaigns",
+        "board": "669b03c707f6072844ddae68",
+        "order": 1,
+        "createdAt": "2024-07-02T00:00:00Z",
+        "updatedAt": "2024-07-02T00:00:00Z"
+    },
+    {
+        "title": "Leads",
+        "board": "669b03c707f6072844ddae6a",
+        "order": 1,
+        "createdAt": "2024-07-04T00:00:00Z",
+        "updatedAt": "2024-07-04T00:00:00Z"
+    },
+    {
+        "title": "New Tickets",
+        "board": "669b03c707f6072844ddae6a",
+        "order": 1,
+        "createdAt": "2024-07-05T00:00:00Z",
+        "updatedAt": "2024-07-05T00:00:00Z"
+    },
+    {
+        "title": "Recruitment",
+        "board": "669b03c707f6072844ddae6a",
+        "order": 1,
+        "createdAt": "2024-07-06T00:00:00Z",
+        "updatedAt": "2024-07-06T00:00:00Z"
+    },
+    {
+        "title": "Employee Onboarding",
+        "board": "669b03c707f6072844ddae68",
+        "order": 2,
+        "createdAt": "2024-07-06T00:00:00Z",
+        "updatedAt": "2024-07-06T00:00:00Z"
+    },
+    {
+        "title": "Performance Reviews",
+        "board": "669b03c707f6072844ddae68",
+        "order": 3,
+        "createdAt": "2024-07-06T00:00:00Z",
+        "updatedAt": "2024-07-06T00:00:00Z"
+    },
+    {
+        "title": "Training",
+        "board": "669b03c707f6072844ddae68",
+        "order": 4,
+        "createdAt": "2024-07-06T00:00:00Z",
+        "updatedAt": "2024-07-06T00:00:00Z"
+    },
+    {
+        "title": "Benefits",
+        "board": "669b03c707f6072844ddae68",
+        "order": 5,
+        "createdAt": "2024-07-06T00:00:00Z",
+        "updatedAt": "2024-07-06T00:00:00Z"
+    },
+    {
+        "title": "Policy Updates",
+        "board": "669b03c707f6072844ddae68",
+        "order": 6,
+        "createdAt": "2024-07-06T00:00:00Z",
+        "updatedAt": "2024-07-06T00:00:00Z"
+    }
+]

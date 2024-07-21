@@ -1,5 +1,5 @@
 const ensureAuthenticated = (req, res, next) => {
-    if (!req?.session?.user) {
+    if (!req?.session) {
         res.statusCode = 401;
         const error = new Error('Unauthorized Request');
         throw error;

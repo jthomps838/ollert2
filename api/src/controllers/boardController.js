@@ -24,11 +24,14 @@ class BoardController {
     static async getBoardById(req, res, next) {
         const { id } = req.params;
         try {
-            const board = await Board.findById(id).populate('owner members');
+            const board = await Board.findById(id)
+                .populate({ path: 'owner', select: '-password' })
+                .populate('members');
             if (board) {
-                res.status(200).json(board);
+                return res.status(200).json(board);
             }
-            res.status(404).json({
+            res.status(404);
+            next({
                 message: `No board found with the id: ${id}`,
             });
         } catch (err) {

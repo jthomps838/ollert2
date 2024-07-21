@@ -1,0 +1,128 @@
+[
+    {
+        "title": "Development Board",
+        "description": "Board for development tasks",
+        "owner": "669d36451369aaaa7b8f683d",
+        "members": [],
+        "background": "blue",
+        "createdAt": "2024-07-01T00:00:00Z",
+        "updatedAt": "2024-07-01T00:00:00Z"
+    },
+    {
+        "title": "Marketing Board",
+        "description": "Board for marketing tasks",
+        "owner": "669d36451369aaaa7b8f683d",
+        "members": [],
+        "background": "green",
+        "createdAt": "2024-07-02T00:00:00Z",
+        "updatedAt": "2024-07-02T00:00:00Z"
+    },
+    {
+        "title": "Design Board",
+        "description": "Board for design tasks",
+        "owner": "669d36451369aaaa7b8f683d",
+        "members": [],
+        "background": "red",
+        "createdAt": "2024-07-03T00:00:00Z",
+        "updatedAt": "2024-07-03T00:00:00Z"
+    },
+    {
+        "title": "Sales Board",
+        "description": "Board for sales activities",
+        "owner": "669d36451369aaaa7b8f683d",
+        "members": [],
+        "background": "yellow",
+        "createdAt": "2024-07-04T00:00:00Z",
+        "updatedAt": "2024-07-04T00:00:00Z"
+    },
+    {
+        "title": "Customer Support Board",
+        "description": "Board for customer support tasks",
+        "owner": "669d36451369aaaa7b8f683d",
+        "members": [],
+        "background": "purple",
+        "createdAt": "2024-07-05T00:00:00Z",
+        "updatedAt": "2024-07-05T00:00:00Z"
+    },
+    {
+        "title": "HR Board",
+        "description": "Board for HR tasks",
+        "owner": "669d36451369aaaa7b8f683d",
+        "members": [],
+        "background": "orange",
+        "createdAt": "2024-07-06T00:00:00Z",
+        "updatedAt": "2024-07-06T00:00:00Z"
+    },
+    {
+        "title": "Product Development Board",
+        "description": "Board for product development tasks",
+        "owner": "669d36451369aaaa7b8f683d",
+        "members": [],
+        "background": "cyan",
+        "createdAt": "2024-07-07T00:00:00Z",
+        "updatedAt": "2024-07-07T00:00:00Z"
+    },
+    {
+        "title": "Engineering Board",
+        "description": "Board for engineering tasks",
+        "owner": "669d36451369aaaa7b8f683d",
+        "members": [],
+        "background": "gray",
+        "createdAt": "2024-07-08T00:00:00Z",
+        "updatedAt": "2024-07-08T00:00:00Z"
+    },
+    {
+        "title": "Legal Board",
+        "description": "Board for legal tasks",
+        "owner": "669d36451369aaaa7b8f683d",
+        "members": [],
+        "background": "brown",
+        "createdAt": "2024-07-09T00:00:00Z",
+        "updatedAt": "2024-07-09T00:00:00Z"
+    },
+    {
+        "title": "Finance Board",
+        "description": "Board for finance tasks",
+        "owner": "669d36451369aaaa7b8f683d",
+        "members": [],
+        "background": "pink",
+        "createdAt": "2024-07-10T00:00:00Z",
+        "updatedAt": "2024-07-10T00:00:00Z"
+    },
+    {
+        "title": "Operations Board",
+        "description": "Board for operations tasks",
+        "owner": "669d36451369aaaa7b8f683d",
+        "members": [],
+        "background": "teal",
+        "createdAt": "2024-07-11T00:00:00Z",
+        "updatedAt": "2024-07-11T00:00:00Z"
+    },
+    {
+        "title": "IT Board",
+        "description": "Board for IT tasks",
+        "owner": "669d36451369aaaa7b8f683d",
+        "members": [],
+        "background": "indigo",
+        "createdAt": "2024-07-12T00:00:00Z",
+        "updatedAt": "2024-07-12T00:00:00Z"
+    },
+    {
+        "title": "Training Board",
+        "description": "Board for training tasks",
+        "owner": "669d36451369aaaa7b8f683d",
+        "members": [],
+        "background": "lime",
+        "createdAt": "2024-07-13T00:00:00Z",
+        "updatedAt": "2024-07-13T00:00:00Z"
+    },
+    {
+        "title": "Research Board",
+        "description": "Board for research tasks",
+        "owner": "669d36451369aaaa7b8f683d",
+        "members": [],
+        "background": "silver",
+        "createdAt": "2024-07-14T00:00:00Z",
+        "updatedAt": "2024-07-14T00:00:00Z"
+    }
+]

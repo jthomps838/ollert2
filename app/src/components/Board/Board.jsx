@@ -1,31 +1,20 @@
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense } from 'react';
 
 import './Board.scss';
 import BoardHeader from './BoardHeader';
 import BoardList from './BoardList';
 
-// mock data
-import FakeLists from '../../mockData/boards';
-
-const Board = ({ id, title }) => {
-    const [boardLists, setBoardLists] = useState([]);
-    useEffect(() => {
-        if (id) {
-            // API call for list based on Board id
-            const lists = FakeLists.filter((list) => list.board == id);
-            setBoardLists(lists.sort((a, b) => a.board === id));
-        }
-    }, [id]);
-
+const Board = ({ board }) => {
     return (
         <main className='container'>
-            <BoardHeader title={title} />
+            <BoardHeader title={board.title} />
             <Suspense fallback={<h1>Loading...</h1>}>
                 <section className='board-content'>
-                    {boardLists.map((list) => (
+                    {board?.lists?.map((list) => (
                         <BoardList
                             key={list.order}
                             list={list}
+                            cards={board.cards}
                         />
                     ))}
                 </section>
