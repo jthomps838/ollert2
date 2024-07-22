@@ -16,7 +16,7 @@ const BoardDetails = () => {
                 setBoard(() => data);
             });
     }, [boardId]);
-    console.log(board);
+
     return (
         <section className='main-content'>
             <AsideMenu />
